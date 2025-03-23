@@ -39,13 +39,13 @@ class MainWindow(QTabWidget):
         self.setWindowIcon(QIcon("images/UI/lufei.png"))
         self.output_size = 480
         self.img2predict = ""
-        self.device = 'cpu'
+        self.device = '0'
         self.init_vid_id = '0'
         self.vid_source = self.init_vid_id
         self.stopEvent = threading.Event()
         self.webcam = True
         self.stopEvent.clear()
-        self.model = self.model_load(weights="runs/train/exps/weights/best.pt",
+        self.model = self.model_load(weights="runs/train/exp7/weights/best.pt",
                                      device=self.device)  # todo 指明模型加载的位置的设备
         self.conf_thres = 0.25  # confidence threshold
         self.iou_thres = 0.45  # NMS IOU thresholdv
@@ -171,15 +171,15 @@ class MainWindow(QTabWidget):
         # 主页面
         about_widget = QWidget()
         about_layout = QVBoxLayout()
-        about_title = QLabel('欢迎使用基于YOLOV5的目标检测系统\n'
-                             '（99调试大礼包加Q: 3045834499）')  # todo 修改欢迎词语
+        about_title = QLabel('电线绝缘子缺陷检测\n'
+                             '简易系统')  # todo 修改欢迎词语
         about_title.setFont(QFont('楷体', 18))
         about_title.setAlignment(Qt.AlignCenter)
         about_img = QLabel()
         about_img.setPixmap(QPixmap('images/UI/zhu.jpg'))
         about_img.setAlignment(Qt.AlignCenter)
         label_super = QLabel()  # todo 更换作者信息
-        label_super.setText("<a href='https://blog.csdn.net/ECHOSON'>找到我-->肆十二</a>")
+
         label_super.setFont(QFont('楷体', 16))
         label_super.setOpenExternalLinks(True)
         label_super.setAlignment(Qt.AlignRight)
@@ -469,6 +469,7 @@ class MainWindow(QTabWidget):
             event.ignore()
 
 # todo 屏蔽主页，只展示主要部分
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
