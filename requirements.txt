@@ -35,3 +35,4 @@ pyqt5
 flatbuffers
 Pillow==8.4.0
 nvitop
+setuptools==59.5.0
